@@ -28,11 +28,6 @@ theme:
         name: Switch to light mode
       primary: indigo
       accent: indigo
-  # Add custom JavaScript and overrides
-  custom_dir: docs/overrides
-
-extra_javascript:
-  - javascripts/extra.js
 
 markdown_extensions:
   - pymdownx.highlight:
