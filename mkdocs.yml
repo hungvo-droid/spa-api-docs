@@ -1,6 +1,5 @@
 site_name: SPA Customer Service Documentation
 site_description: Documentation for the SPA Customer Service API
-site_url: https://example.com/api-docs/
 use_directory_urls: false
 
 theme:
