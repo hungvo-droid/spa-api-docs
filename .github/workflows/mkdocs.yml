@@ -1,27 +1,37 @@
-name: Deploy MkDocs
+name: Deploy MkDocs to GitHub Pages
 
 on:
   push:
     branches:
-      - main  # or your default branch
+      - main  # Deploy whenever you push to main
+  workflow_dispatch:  # Allow manual trigger from Actions tab
+
+permissions:
+  contents: write  # Required to push to gh-pages branch
 
 jobs:
-  build:
+  deploy:
     runs-on: ubuntu-latest
 
     steps:
+      # 1. Checkout repository
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Setup Python
+      # 2. Set up Python
+      - name: Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: '3.x'
 
+      # 3. Install MkDocs and theme
       - name: Install dependencies
         run: |
           pip install mkdocs mkdocs-material
 
-      - name: Build and Deploy
+      # 4. Deploy to GitHub Pages
+      - name: Deploy MkDocs
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          mkdocs gh-deploy --force
+          mkdocs gh-deploy --force --remote-name origin
