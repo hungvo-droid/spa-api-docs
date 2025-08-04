@@ -259,6 +259,29 @@ Subscribe the app to Messenger events for a Facebook Page.
 }
 ```
 
+### DELETE /api/facebook/unsubscribe
+Unsubscribe the app from Messenger events for a Facebook Page.
+
+**Request Body:**
+```json
+{
+  "page_id": "page_facebook_id",
+  "user_access_token": "user_access_token"
+}
+```
+
+**Query Parameters:**
+- `secret_key` - Admin secret key
+
+**Response:**
+```json
+{
+  "status": "success",
+  "message": "Successfully unsubscribed page from Messenger events",
+  "page_id": "page_facebook_id"
+}
+```
+
 ## OAuth Integration
 
 ### GET /api/facebook/oauth/url
