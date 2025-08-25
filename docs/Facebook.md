@@ -675,9 +675,11 @@ The service runs on the configured port (default: 8080) and requires:
 
 To run the deployment:
 
-1. Load the .env in `spa_customer_service/agents/customer-support` with command <pre> ```bash export $(grep -v '^#' .env | xargs) ``` </pre>
+1. Load the .env in `spa_customer_service/agents/customer-support` with command 
+<pre> ```bash export $(grep -v '^#' .env | xargs) ``` </pre>
 2. Prepare the env.yaml in `spa_customer_service/agents/customer-support/deployment_facebook`
 3. Run deploy script ```bash deploy.sh```
+
 
 Note: If you clone from github, please get from branch `deploy/messenger_handler`
 
