@@ -44,6 +44,8 @@ nav:
   - Home: index.md
   - Agents API Documentation: api_documentation.md
   - Facebook API Documentation: Facebook.md
+  - Zalo API Documentation: Zalo.md
+  - Telegram API Documentation: Telegram.md
 
 plugins:
   - search
