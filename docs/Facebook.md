@@ -112,7 +112,7 @@ Handle Facebook OAuth callback.
 ## Page Management
 
 ### POST /api/facebook/pages
-Get a list of Facebook pages that the user can manage.
+Get a list of Facebook pages that the user can manage (Get from Facebook API). Also store them in DB (not connected_at status).
 
 **Request Body:**
 ```json
@@ -142,7 +142,7 @@ Get a list of Facebook pages that the user can manage.
 ```
 
 ### GET /api/facebook/pages/stored_adminid
-Get all Facebook pages stored in the database for an admin.
+Get all Facebook pages stored in the database for an admin (Get from DB).
 
 **Query Parameters:**
 
@@ -196,7 +196,7 @@ Subscribe the app to Messenger events for a Facebook Page.
 ```
 
 ### DELETE /api/facebook/unsubscribe
-Unsubscribe the app from Messenger events for a Facebook Page.
+Unsubscribe the app from Messenger events for a Facebook Page (Only change the status of connected_at to None).
 
 **Query Parameters:**
 
@@ -297,11 +297,11 @@ Send a message to a Facebook user.
 **Processing:**
 
 1. Sends message to Facebook user via Graph API
-2. Adds message to session for tracking
+2. Adds message to session for tracking (if that message is not from Agents but Admin).
 3. Forwards message to configured webhook URL
 
 ### POST /api/post_message
-Generic endpoint to post message to any URL.
+Generic endpoint to post message to any URL (for all type of messages).
 
 **Request Body:**
 ```json
@@ -388,7 +388,7 @@ Remove webhook URL from a page.
 ## Pub/Sub Integration
 
 ### POST /post_message_pubsub
-Receives Pub/Sub push deliveries from the agent processing system.
+Receives Pub/Sub push deliveries from the agent processing system, process and send to the users & webhooks.
 
 **Request Body:** `PubSubPushEnvelope`
 ```json
@@ -564,7 +564,7 @@ Stop Pub/Sub message monitoring.
 ## Health Check
 
 ### GET /health
-Health check endpoint to verify service status.
+Health check endpoint to verify service status (Mainly for Cloud Run status checking).
 
 **Response:**
 ```json
@@ -646,13 +646,13 @@ The service uses PostgreSQL to store:
 - **User Accounts:** Admin user information and page associations
 - **Message Events:** Tracking of all message interactions
 
-## Security Considerations
+<!-- ## Security Considerations
 
 1. **Admin Authentication:** All sensitive operations require the admin secret key
 2. **OAuth State Validation:** Prevents CSRF attacks in OAuth flow
 3. **Token Management:** Securely stores and manages Facebook access tokens
 4. **Input Validation:** Validates all incoming data and parameters
-5. **Error Logging:** Comprehensive error logging without exposing sensitive data
+5. **Error Logging:** Comprehensive error logging without exposing sensitive data -->
 
 ## Rate Limiting
 
@@ -672,6 +672,13 @@ The service runs on the configured port (default: 8080) and requires:
 3. Google Cloud authentication (for agent API)
 4. Pub/Sub topic and subscription setup
 5. Proper environment variable configuration
+
+To run the deployment:
+1. Load the .env in `spa_customer_service/agents/customer-support` with command <pre> ```bash export $(grep -v '^#' .env | xargs) ``` </pre>
+2. Prepare the env.yaml in `spa_customer_service/agents/customer-support/deployment_facebook`
+3. Run deploy script ```bash deploy.sh```
+
+Note: If you clone from github, please get from branch `deploy/messenger_handler`
 
 <!-- ## Example Usage
 
