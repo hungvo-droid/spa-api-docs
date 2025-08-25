@@ -60,6 +60,7 @@ The service implements a Facebook Messenger integration with the following compo
 Get Facebook OAuth URL for user login.
 
 **Query Parameters:**
+
 - `redirect_uri` - Optional redirect URI (defaults to config)
 - `state` - Optional state parameter for CSRF protection
 - `secret_key` - Admin secret key
