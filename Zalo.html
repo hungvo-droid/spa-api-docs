@@ -1,0 +1,1273 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Documentation for the SPA Customer Service API">
+      
+      
+      
+      
+        <link rel="prev" href="Facebook.html">
+      
+      
+        <link rel="next" href="Telegram.html">
+      
+      
+      <link rel="icon" href="assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.18">
+    
+    
+      
+        <title>Zalo API Documentation - SPA Customer Service Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/main.7e37652d.min.css">
+      
+        
+        <link rel="stylesheet" href="assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#zalo-oa-api-documentation" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="index.html" title="SPA Customer Service Documentation" class="md-header__button md-logo" aria-label="SPA Customer Service Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            SPA Customer Service Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Zalo API Documentation
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6m0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4M7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="index.html" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="api_documentation.html" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Agents API Documentation
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="Facebook.html" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Facebook API Documentation
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    <li class="md-tabs__item md-tabs__item--active">
+      <a href="Zalo.html" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Zalo API Documentation
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="Telegram.html" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Telegram API Documentation
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="index.html" title="SPA Customer Service Documentation" class="md-nav__button md-logo" aria-label="SPA Customer Service Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    SPA Customer Service Documentation
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="api_documentation.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Agents API Documentation
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Facebook.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Facebook API Documentation
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Zalo API Documentation
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="Zalo.html" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    Zalo API Documentation
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#general-flow" class="md-nav__link">
+    <span class="md-ellipsis">
+      General Flow
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#table-of-contents" class="md-nav__link">
+    <span class="md-ellipsis">
+      Table of Contents
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#architecture-overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      Architecture Overview
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#environment-variables" class="md-nav__link">
+    <span class="md-ellipsis">
+      Environment Variables
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#oauth-authentication" class="md-nav__link">
+    <span class="md-ellipsis">
+      OAuth Authentication
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="OAuth Authentication">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#get-auth" class="md-nav__link">
+    <span class="md-ellipsis">
+      GET /auth
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get-webhook-oauth-callback" class="md-nav__link">
+    <span class="md-ellipsis">
+      GET /webhook (OAuth Callback)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#webhook-endpoints" class="md-nav__link">
+    <span class="md-ellipsis">
+      Webhook Endpoints
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Webhook Endpoints">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#get-webhook-verification" class="md-nav__link">
+    <span class="md-ellipsis">
+      GET /webhook (Verification)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#post-webhook" class="md-nav__link">
+    <span class="md-ellipsis">
+      POST /webhook
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pubsub-integration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pub/Sub Integration
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Pub/Sub Integration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#post-post_message_pubsub" class="md-nav__link">
+    <span class="md-ellipsis">
+      POST /post_message_pubsub
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#message-processing-flow" class="md-nav__link">
+    <span class="md-ellipsis">
+      Message Processing Flow
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Message Processing Flow">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-message-reception" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Message Reception
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-message-publishing" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Message Publishing
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-response-processing" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Response Processing
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#health-check" class="md-nav__link">
+    <span class="md-ellipsis">
+      Health Check
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Health Check">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#get-_ahhealth" class="md-nav__link">
+    <span class="md-ellipsis">
+      GET /_ah/health
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#error-handling" class="md-nav__link">
+    <span class="md-ellipsis">
+      Error Handling
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#message-features" class="md-nav__link">
+    <span class="md-ellipsis">
+      Message Features
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Message Features">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#debouncing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Debouncing
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#user-tag-filtering" class="md-nav__link">
+    <span class="md-ellipsis">
+      User Tag Filtering
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#session-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      Session Management
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#inactivity-monitoring" class="md-nav__link">
+    <span class="md-ellipsis">
+      Inactivity Monitoring
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#markdown-processing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Markdown Processing
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#token-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      Token Management
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#database-operations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Database Operations
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#security-considerations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Security Considerations
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#rate-limiting" class="md-nav__link">
+    <span class="md-ellipsis">
+      Rate Limiting
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#deployment" class="md-nav__link">
+    <span class="md-ellipsis">
+      Deployment
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-usage" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example Usage
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Example Usage">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-oauth-authentication" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. OAuth Authentication
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-webhook-verification" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Webhook Verification
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-test-health-check" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Test Health Check
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-send-test-message-via-zalo-oa-api" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Send Test Message (via Zalo OA API)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#integration-with-main-agent-service" class="md-nav__link">
+    <span class="md-ellipsis">
+      Integration with Main Agent Service
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Telegram.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Telegram API Documentation
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="zalo-oa-api-documentation">Zalo OA API Documentation</h1>
+<p>This document describes the API endpoints for the Zalo Official Account (OA) integration service that handles webhook events, message processing, and OA management through a Pub/Sub architecture.</p>
+<h2 id="general-flow">General Flow</h2>
+<ol>
+<li><strong>OAuth Authentication:</strong> Complete Zalo OAuth flow to obtain access and refresh tokens</li>
+<li><strong>Webhook Setup:</strong> Configure webhook URL for receiving Zalo events</li>
+<li><strong>Message Reception:</strong> Receive messages via webhook and publish to Pub/Sub</li>
+<li><strong>Message Processing:</strong> Agent processes messages and publishes responses back to Pub/Sub</li>
+<li><strong>Response Delivery:</strong> Service receives responses from Pub/Sub and sends to Zalo users</li>
+</ol>
+<p>This flow enables your application to handle Zalo OA interactions, process messages through AI agents, and maintain real-time conversations with automatic token refresh.</p>
+<h2 id="table-of-contents">Table of Contents</h2>
+<ul>
+<li><a href="#architecture-overview">Architecture Overview</a></li>
+<li><a href="#environment-variables">Environment Variables</a></li>
+<li><a href="#oauth-authentication">OAuth Authentication</a></li>
+<li><a href="#webhook-endpoints">Webhook Endpoints</a></li>
+<li><a href="#pubsub-integration">Pub/Sub Integration</a></li>
+<li><a href="#health-check">Health Check</a></li>
+<li><a href="#error-handling">Error Handling</a></li>
+</ul>
+<h2 id="architecture-overview">Architecture Overview</h2>
+<p>The service implements a Zalo OA integration with the following components:</p>
+<ul>
+<li><strong>OAuth Integration:</strong> Complete PKCE OAuth flow for Zalo OA authentication</li>
+<li><strong>Pub/Sub Integration:</strong> Messages are published to Google Cloud Pub/Sub for processing</li>
+<li><strong>Message Debouncing:</strong> Prevents duplicate processing and batches rapid messages (4-second window)</li>
+<li><strong>Session Management:</strong> Maintains user sessions with visit counts and preferences</li>
+<li><strong>Token Management:</strong> Automatic refresh of expired access tokens</li>
+<li><strong>Inactivity Monitoring:</strong> Automatic cancellation of appointments after 15 minutes of inactivity</li>
+</ul>
+<h2 id="environment-variables">Environment Variables</h2>
+<table>
+<thead>
+<tr>
+<th>Variable</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>APP_URL</code></td>
+<td>Base URL for the agent API</td>
+<td>Required</td>
+</tr>
+<tr>
+<td><code>ZALO_APP_ID</code></td>
+<td>Zalo application ID</td>
+<td>Required</td>
+</tr>
+<tr>
+<td><code>ZALO_APP_SECRET</code></td>
+<td>Zalo application secret</td>
+<td>Required</td>
+</tr>
+<tr>
+<td><code>ZALO_ACCESS_TOKEN</code></td>
+<td>Initial Zalo access token</td>
+<td>"None"</td>
+</tr>
+<tr>
+<td><code>ZALO_REFRESH_TOKEN</code></td>
+<td>Initial Zalo refresh token</td>
+<td>"None"</td>
+</tr>
+<tr>
+<td><code>AGENT_APP_NAME</code></td>
+<td>Application name for sessions</td>
+<td>"customer_support"</td>
+</tr>
+<tr>
+<td><code>PORT</code></td>
+<td>Server port</td>
+<td>8000</td>
+</tr>
+<tr>
+<td><code>INACTIVITY_TIMEOUT</code></td>
+<td>Inactivity timeout in seconds</td>
+<td>900 (15 minutes)</td>
+</tr>
+<tr>
+<td><code>CHECK_INACTIVE_USERS_ENABLED</code></td>
+<td>Enable inactivity checking</td>
+<td>"true"</td>
+</tr>
+<tr>
+<td><code>GOOGLE_CLOUD_PROJECT</code></td>
+<td>Google Cloud Project ID</td>
+<td>Required</td>
+</tr>
+<tr>
+<td><code>WEBHOOK_URL</code></td>
+<td>Webhook URL for OAuth callback</td>
+<td>Auto-generated</td>
+</tr>
+</tbody>
+</table>
+<h2 id="oauth-authentication">OAuth Authentication</h2>
+<h3 id="get-auth">GET /auth</h3>
+<p>Initiate Zalo OAuth authentication flow.</p>
+<p><strong>Description:</strong> Redirects user to Zalo OAuth authorization page with PKCE challenge.</p>
+<p><strong>Response:</strong> HTTP 302 redirect to Zalo OAuth URL</p>
+<p><strong>OAuth Flow:</strong>
+1. Generates PKCE code verifier and challenge
+2. Creates state parameter for CSRF protection
+3. Redirects to Zalo OAuth endpoint with required parameters</p>
+<p><strong>Example:</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>curl<span class="w"> </span><span class="s2">&quot;https://your-domain.com/auth&quot;</span>
+</code></pre></div></p>
+<h3 id="get-webhook-oauth-callback">GET /webhook (OAuth Callback)</h3>
+<p>Handle OAuth callback from Zalo.</p>
+<p><strong>Query Parameters:</strong>
+- <code>code</code> - Authorization code from Zalo
+- <code>state</code> - State parameter for CSRF protection
+- <code>error</code> - Error code if OAuth failed (optional)</p>
+<p><strong>Response:</strong>
+- <code>200 OK</code>: "Authentication successful! You can close this window."
+- <code>400 Bad Request</code>: Authentication error details</p>
+<p><strong>Processing:</strong>
+1. Validates state parameter
+2. Exchanges authorization code for access and refresh tokens
+3. Stores tokens in application state
+4. Updates global token variables</p>
+<h2 id="webhook-endpoints">Webhook Endpoints</h2>
+<h3 id="get-webhook-verification">GET /webhook (Verification)</h3>
+<p>Zalo webhook verification endpoint.</p>
+<p><strong>Headers:</strong>
+- <code>verifier</code> - Verification token from Zalo</p>
+<p><strong>Response:</strong> Returns the verifier token for webhook verification</p>
+<p><strong>Example:</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>curl<span class="w"> </span><span class="s2">&quot;https://your-domain.com/webhook&quot;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">  </span>-H<span class="w"> </span><span class="s2">&quot;verifier: your_verification_token&quot;</span>
+</code></pre></div></p>
+<h3 id="post-webhook">POST /webhook</h3>
+<p>Handles incoming webhook events from Zalo OA.</p>
+<p><strong>Request Body:</strong> Zalo webhook event data</p>
+<p><strong>Response:</strong> <code>"OK"</code></p>
+<p><strong>Supported Events:</strong>
+- <code>user_send_text</code> - Text messages from users
+- <code>user_send_image</code> - Image messages from users
+- <code>user_send_file</code> - File messages from users
+- <code>oa_send_text</code> - Text messages sent by OA</p>
+<p><strong>Features:</strong>
+- <strong>User Tag Filtering:</strong> Checks user tags to determine if message should be handled by AI or admin
+- <strong>Message Debouncing:</strong> Batches rapid messages from the same user (4-second window)
+- <strong>Session Management:</strong> Maintains user sessions with visit counts and preferences
+- <strong>Inactivity Tracking:</strong> Monitors user activity for appointment management</p>
+<p><strong>Event Processing:</strong>
+1. <strong>Text Messages:</strong> Processed through AI agent or admin based on user tags
+2. <strong>Media Messages:</strong> Sends fallback message requesting text format
+3. <strong>OA Messages:</strong> Updates session with admin message</p>
+<h2 id="pubsub-integration">Pub/Sub Integration</h2>
+<h3 id="post-post_message_pubsub">POST /post_message_pubsub</h3>
+<p>Receives Pub/Sub push deliveries from the agent processing system.</p>
+<p><strong>Request Body:</strong> <code>PubSubPushEnvelope</code>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="p">{</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">  </span><span class="nt">&quot;message&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">    </span><span class="nt">&quot;data&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;string (base64 encoded)&quot;</span><span class="p">,</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">    </span><span class="nt">&quot;message_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;string&quot;</span><span class="p">,</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="w">    </span><span class="nt">&quot;publish_time&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;string&quot;</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="w">  </span><span class="p">},</span>
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="w">  </span><span class="nt">&quot;subscription&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;string&quot;</span>
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="p">}</span>
+</code></pre></div></p>
+<p><strong>Response:</strong> No content (HTTP 204)</p>
+<p><strong>Processing Logic:</strong>
+1. Decodes base64 message data
+2. Validates platform is "zalo"
+3. Extracts user_id and message text
+4. Removes markdown formatting from response text
+5. Sends message to Zalo user asynchronously</p>
+<p><strong>Status Codes:</strong>
+- <code>204 No Content</code>: Successfully processed (always returns 204 to avoid Pub/Sub retries)</p>
+<h2 id="message-processing-flow">Message Processing Flow</h2>
+<h3 id="1-message-reception">1. Message Reception</h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>Zalo User → Zalo OA API → Webhook → Service
+</code></pre></div>
+<h3 id="2-message-publishing">2. Message Publishing</h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>Service → Pub/Sub Topic → Agent Processing
+</code></pre></div>
+<p><strong>Message Format:</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="p">{</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="w">  </span><span class="nt">&quot;app_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;customer_support&quot;</span><span class="p">,</span>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="w">  </span><span class="nt">&quot;user_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;zalo_user_id&quot;</span><span class="p">,</span>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="w">  </span><span class="nt">&quot;session_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;zalo_{user_id}&quot;</span><span class="p">,</span>
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="w">  </span><span class="nt">&quot;new_message&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="w">    </span><span class="nt">&quot;role&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;user&quot;</span><span class="p">,</span>
+<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="w">    </span><span class="nt">&quot;parts&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="nt">&quot;text&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;user message&quot;</span><span class="p">}]</span>
+<a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a><span class="w">  </span><span class="p">},</span>
+<a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a><span class="w">  </span><span class="nt">&quot;platform&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;zalo&quot;</span><span class="p">,</span>
+<a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a><span class="w">  </span><span class="nt">&quot;streaming&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span>
+<a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a><span class="p">}</span>
+</code></pre></div></p>
+<h3 id="3-response-processing">3. Response Processing</h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>Agent Processing → Pub/Sub Subscription → Service → Zalo OA API → User
+</code></pre></div>
+<p><strong>Response Format:</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="p">{</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="w">  </span><span class="nt">&quot;platform&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;zalo&quot;</span><span class="p">,</span>
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="w">  </span><span class="nt">&quot;user_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;zalo_user_id&quot;</span><span class="p">,</span>
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="w">  </span><span class="nt">&quot;new_message&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="w">    </span><span class="nt">&quot;role&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;assistant&quot;</span><span class="p">,</span>
+<a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a><span class="w">    </span><span class="nt">&quot;parts&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="nt">&quot;text&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;agent response&quot;</span><span class="p">}]</span>
+<a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a><span class="w">  </span><span class="p">}</span>
+<a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a><span class="p">}</span>
+</code></pre></div></p>
+<h2 id="health-check">Health Check</h2>
+<h3 id="get-_ahhealth">GET /_ah/health</h3>
+<p>Health check endpoint to verify service status.</p>
+<p><strong>Response:</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="p">{</span>
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="w">  </span><span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;healthy|unhealthy|degraded&quot;</span><span class="p">,</span>
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="w">  </span><span class="nt">&quot;details&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="w">    </span><span class="nt">&quot;zalo&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a><span class="w">      </span><span class="nt">&quot;oa_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;string&quot;</span><span class="p">,</span>
+<a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a><span class="w">      </span><span class="nt">&quot;oa_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;string&quot;</span>
+<a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a><span class="w">  </span><span class="p">}</span>
+<a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a><span class="p">}</span>
+</code></pre></div></p>
+<p><strong>Status Codes:</strong>
+- <code>200 OK</code>: Service is healthy or degraded
+- <code>500 Internal Server Error</code>: Service is unhealthy</p>
+<p><strong>Health Checks:</strong>
+1. <strong>Token Validation:</strong> Verifies Zalo access token is valid
+2. <strong>OA Profile:</strong> Fetches OA profile information
+3. <strong>Token Refresh:</strong> Attempts token refresh if needed</p>
+<h2 id="error-handling">Error Handling</h2>
+<p>All endpoints return appropriate HTTP status codes:</p>
+<ul>
+<li><code>200</code> - Success</li>
+<li><code>204</code> - No Content (Pub/Sub responses)</li>
+<li><code>400</code> - Bad Request (OAuth errors, invalid parameters)</li>
+<li><code>404</code> - Not Found (static files)</li>
+<li><code>500</code> - Internal Server Error</li>
+</ul>
+<p>Error responses include detailed error messages:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="p">{</span>
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="w">  </span><span class="nt">&quot;detail&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Error description&quot;</span>
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="p">}</span>
+</code></pre></div>
+<h2 id="message-features">Message Features</h2>
+<h3 id="debouncing">Debouncing</h3>
+<ul>
+<li>Messages from the same user are queued for 4 seconds</li>
+<li>Rapid messages are combined into a single request</li>
+<li>Prevents spam and improves processing efficiency</li>
+</ul>
+<h3 id="user-tag-filtering">User Tag Filtering</h3>
+<ul>
+<li>Checks user tags via Zalo API</li>
+<li>Messages from users with "NonAI" tag are handled by admin</li>
+<li>Other messages are processed through AI agent</li>
+</ul>
+<h3 id="session-management">Session Management</h3>
+<ul>
+<li>Unique session IDs for each Zalo user</li>
+<li>Tracks visit counts and message timestamps</li>
+<li>Maintains conversation context and preferences</li>
+</ul>
+<h3 id="inactivity-monitoring">Inactivity Monitoring</h3>
+<ul>
+<li>Monitors user activity for appointment-related conversations</li>
+<li>Automatically cancels appointments after 15 minutes of inactivity</li>
+<li>Sends cancellation messages and updates session state</li>
+</ul>
+<h3 id="markdown-processing">Markdown Processing</h3>
+<ul>
+<li>Removes markdown formatting from agent responses</li>
+<li>Converts to plain text for Zalo compatibility</li>
+<li>Handles code blocks, links, and formatting</li>
+</ul>
+<h3 id="token-management">Token Management</h3>
+<ul>
+<li>Automatic refresh of expired access tokens</li>
+<li>Retry logic for failed API calls</li>
+<li>Graceful handling of authentication errors</li>
+</ul>
+<h2 id="database-operations">Database Operations</h2>
+<p>The service integrates with the main agent service for session management:</p>
+<ul>
+<li><strong>Session Creation:</strong> Creates or updates user sessions via agent API</li>
+<li><strong>Event Logging:</strong> Records conversation events and admin messages</li>
+<li><strong>State Management:</strong> Maintains session state with user preferences</li>
+</ul>
+<h2 id="security-considerations">Security Considerations</h2>
+<ol>
+<li><strong>OAuth Security:</strong> Implements PKCE flow for secure OAuth authentication</li>
+<li><strong>State Validation:</strong> Prevents CSRF attacks in OAuth flow</li>
+<li><strong>Token Management:</strong> Securely stores and refreshes Zalo access tokens</li>
+<li><strong>Input Validation:</strong> Validates all incoming webhook data</li>
+<li><strong>Error Logging:</strong> Comprehensive error logging without exposing sensitive data</li>
+</ol>
+<h2 id="rate-limiting">Rate Limiting</h2>
+<p>The service implements message queuing to handle high message volumes:</p>
+<ul>
+<li>Messages are queued per user</li>
+<li>Processing is delayed by 4 seconds to batch messages</li>
+<li>Duplicate messages are automatically filtered</li>
+<li>Processing tasks are cancelled and recreated for new messages</li>
+</ul>
+<h2 id="deployment">Deployment</h2>
+<p>The service runs on the configured port (default: 8000) and requires:</p>
+<ol>
+<li>Valid Zalo OA application configuration</li>
+<li>Google Cloud Project with Pub/Sub setup</li>
+<li>Agent API access for session management</li>
+<li>Proper environment variable configuration</li>
+</ol>
+<h2 id="example-usage">Example Usage</h2>
+<h3 id="1-oauth-authentication">1. OAuth Authentication</h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="c1"># Start OAuth flow</span>
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>curl<span class="w"> </span><span class="s2">&quot;https://your-domain.com/auth&quot;</span>
+<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>
+<a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="c1"># Complete OAuth callback (browser redirect)</span>
+<a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a><span class="c1"># https://your-domain.com/webhook?code=authorization_code&amp;state=state_param</span>
+</code></pre></div>
+<h3 id="2-webhook-verification">2. Webhook Verification</h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>curl<span class="w"> </span><span class="s2">&quot;https://your-domain.com/webhook&quot;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="w">  </span>-H<span class="w"> </span><span class="s2">&quot;verifier: your_verification_token&quot;</span>
+</code></pre></div>
+<h3 id="3-test-health-check">3. Test Health Check</h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>curl<span class="w"> </span><span class="s2">&quot;https://your-domain.com/_ah/health&quot;</span>
+</code></pre></div>
+<h3 id="4-send-test-message-via-zalo-oa-api">4. Send Test Message (via Zalo OA API)</h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>curl<span class="w"> </span>-X<span class="w"> </span>POST<span class="w"> </span><span class="s2">&quot;https://openapi.zalo.me/v3.0/oa/message/cs&quot;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="w">  </span>-H<span class="w"> </span><span class="s2">&quot;Content-Type: application/json&quot;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a><span class="w">  </span>-H<span class="w"> </span><span class="s2">&quot;access_token: your_access_token&quot;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a><span class="w">  </span>-d<span class="w"> </span><span class="s1">&#39;{</span>
+<a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a><span class="s1">    &quot;recipient&quot;: {&quot;user_id&quot;: &quot;user_id&quot;},</span>
+<a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a><span class="s1">    &quot;message&quot;: {&quot;text&quot;: &quot;Hello from OA!&quot;}</span>
+<a id="__codelineno-13-7" name="__codelineno-13-7" href="#__codelineno-13-7"></a><span class="s1">  }&#39;</span>
+</code></pre></div>
+<h2 id="integration-with-main-agent-service">Integration with Main Agent Service</h2>
+<p>This Zalo service integrates with the main agent service through Pub/Sub:</p>
+<ol>
+<li><strong>Message Flow:</strong> Zalo → Webhook → Pub/Sub → Agent → Pub/Sub → Zalo</li>
+<li><strong>Session Management:</strong> Each Zalo user gets a unique session ID</li>
+<li><strong>OAuth Integration:</strong> Complete PKCE OAuth flow for secure authentication</li>
+<li><strong>Token Management:</strong> Automatic refresh and validation of access tokens</li>
+<li><strong>Inactivity Monitoring:</strong> Built-in appointment management with automatic cancellation</li>
+</ol>
+<p>The service acts as a bridge between Zalo's OA platform and the main agent processing infrastructure, enabling scalable, secure Zalo OA integration with advanced features like inactivity monitoring and user tag filtering.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": ".", "features": ["navigation.tabs", "navigation.sections", "toc.integrate", "search.suggest", "search.highlight", "content.tabs.link", "content.code.annotation", "content.code.copy"], "search": "assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="assets/javascripts/bundle.92b07e13.min.js"></script>
+      
+    
+  </body>
+</html>
