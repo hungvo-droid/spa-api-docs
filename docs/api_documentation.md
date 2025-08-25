@@ -155,12 +155,39 @@ session_object
 ```json
 {
   "access_token": "string (JWT format)",
-  "token_type": "string (always 'bearer')"
+  "token_type": "string (always 'bearer')",
+  "user_id": "string (UUID format)",
+  "full_name": "string"
 }
 ```
 **Status Codes:**
 - `200 OK`: Successfully authenticated
 - `401 Unauthorized`: Incorrect email or password
+
+### Change Password
+**Endpoint:** `POST /change-password`  
+**Description:** Change a user's password by email and current password  
+**Input Schema:** `ChangePasswordRequest`
+```json
+{
+  "current_password": "string",
+  "current_email": "string (valid email format)",
+  "new_password": "string (min length: 8)"
+}
+```
+**Output Schema:**
+```json
+{
+  "message": "Password changed successfully"
+}
+```
+**Status Codes:**
+- `200 OK`: Successfully changed password
+- `400 Bad Request`: Current password is incorrect
+- `404 Not Found`: User not found
+- `500 Internal Server Error`: Database error
+
+## Agent Interaction Endpoints
 
 ### Run with Server-Sent Events
 **Endpoint:** `POST /run_sse`  
@@ -201,6 +228,190 @@ data: [DONE]
 - `200 OK`: Successfully processed
 - `400 Bad Request`: Invalid message format
 - `500 Internal Server Error`: Processing error
+
+### Get Final Answer (Streaming)
+**Endpoint:** `POST /get-final-answer`  
+**Description:** Get only the agent's final answer, hiding all intermediate "thinking" steps  
+**Input Schema:** `ChatRequest`
+```json
+{
+  "prompt": "string",
+  "session_id": "string | null (optional)"
+}
+```
+**Output:** Streaming text response (Content-Type: text/plain)
+**Status Codes:**
+- `200 OK`: Successfully processed
+- `500 Internal Server Error`: ADK Runner not initialized
+
+### Direct Answer (Non-Streaming)
+**Endpoint:** `POST /direct-answer`  
+**Description:** Simple JSON endpoint that returns only the final answer without streaming  
+**Input Schema:** `ChatRequest`
+```json
+{
+  "prompt": "string",
+  "session_id": "string | null (optional)"
+}
+```
+**Output Schema:**
+```json
+{
+  "response": "string"
+}
+```
+**Status Codes:**
+- `200 OK`: Successfully processed
+- `500 Internal Server Error`: ADK Runner not initialized
+
+### Process Text
+**Endpoint:** `POST /process-text`  
+**Description:** Process text to extract and convert image URLs from markdown format to direct access URLs  
+**Input Schema:** `TextRequest`
+```json
+{
+  "text": "string"
+}
+```
+**Output Schema:**
+```json
+{
+  "original_text": "string",
+  "processed_text": "string",
+  "url_mapping": {
+    "original_url": "direct_url"
+  }
+}
+```
+**Status Codes:**
+- `200 OK`: Successfully processed
+- `500 Internal Server Error`: Processing error
+
+## Pub/Sub Integration Endpoints
+
+### Pub/Sub Push Handler
+**Endpoint:** `POST /run_sse_pubsub`  
+**Description:** Pub/Sub push handler that processes messages and publishes responses back to Pub/Sub  
+**Input Schema:** `PubSubPushEnvelope`
+```json
+{
+  "message": {
+    "data": "string (base64 encoded)",
+    "message_id": "string",
+    "publish_time": "string"
+  },
+  "subscription": "string"
+}
+```
+**Output:** No content (HTTP 204)
+**Status Codes:**
+- `204 No Content`: Successfully processed and acknowledged
+
+### Start Pub/Sub Monitoring
+**Endpoint:** `POST /pubsub/start`  
+**Description:** Start Pub/Sub message monitoring  
+**Input Schema:** No parameters required  
+**Output Schema:**
+```json
+{
+  "status": "success",
+  "message": "Pub/Sub monitoring started",
+  "subscription": "string"
+}
+```
+**Status Codes:**
+- `200 OK`: Successfully started monitoring
+- `500 Internal Server Error`: Failed to start monitoring
+
+### Stop Pub/Sub Monitoring
+**Endpoint:** `POST /pubsub/stop`  
+**Description:** Stop Pub/Sub message monitoring  
+**Input Schema:** No parameters required  
+**Output Schema:**
+```json
+{
+  "status": "success",
+  "message": "Pub/Sub monitoring stopped"
+}
+```
+**Status Codes:**
+- `200 OK`: Successfully stopped monitoring
+- `500 Internal Server Error`: Failed to stop monitoring
+
+### Get Pub/Sub Status
+**Endpoint:** `GET /pubsub/status`  
+**Description:** Get Pub/Sub monitoring status and subscription details  
+**Input Schema:** No parameters required  
+**Output Schema:**
+```json
+{
+  "status": "healthy",
+  "monitoring_active": "boolean",
+  "subscription": {
+    "name": "string",
+    "topic": "string",
+    "ack_deadline_seconds": "number",
+    "message_retention_duration": "string",
+    "state": "ACTIVE"
+  },
+  "outgoing_subscription": "string"
+}
+```
+**Status Codes:**
+- `200 OK`: Successfully retrieved status
+- `500 Internal Server Error`: Failed to retrieve status
+
+### Publish Message to Pub/Sub
+**Endpoint:** `POST /pubsub/publish`  
+**Description:** Publish a response message to Pub/Sub  
+**Input Schema:** `PublishMessageRequest`
+```json
+{
+  "user_id": "string",
+  "session_id": "string",
+  "app_name": "string",
+  "response_text": "string",
+  "streaming": "boolean (default: false)",
+  "subscription_name": "string (optional)"
+}
+```
+**Output Schema:**
+```json
+{
+  "status": "success",
+  "message": "Message published successfully",
+  "message_id": "string",
+  "subscription": "string",
+  "topic": "string"
+}
+```
+**Status Codes:**
+- `200 OK`: Successfully published
+- `500 Internal Server Error`: Failed to publish message
+
+## Health and Utility Endpoints
+
+### Health Check
+**Endpoint:** `GET /health`  
+**Description:** Simple health check endpoint that returns 200 OK. Used by Cloud Run to determine if the service is ready to receive traffic.  
+**Input Schema:** No parameters required  
+**Output:** No content (HTTP 200)
+**Status Codes:**
+- `200 OK`: Service is healthy
+
+### Test Print
+**Endpoint:** `GET /test-print`  
+**Description:** Test endpoint to verify printing works  
+**Input Schema:** No parameters required  
+**Output Schema:**
+```json
+{
+  "message": "Test print endpoint working",
+  "timestamp": "string (ISO format)"
+}
+```
+**Status Codes:**
+- `200 OK`: Successfully executed
 
 ## Authentication
 
