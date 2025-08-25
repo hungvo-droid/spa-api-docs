@@ -75,6 +75,7 @@ Get Facebook OAuth URL for user login.
 ```
 
 **OAuth Scopes:**
+
 - `email` - User email access
 - `pages_show_list` - List user's pages
 - `pages_read_user_content` - Read page content
@@ -86,6 +87,7 @@ Get Facebook OAuth URL for user login.
 Handle Facebook OAuth callback.
 
 **Query Parameters:**
+
 - `code` - Authorization code from Facebook
 - `state` - State parameter for CSRF protection
 - `error` - Error code if OAuth failed (optional)
@@ -120,6 +122,7 @@ Get a list of Facebook pages that the user can manage.
 ```
 
 **Query Parameters:**
+
 - `secret_key` - Admin secret key
 
 **Response:**
@@ -142,6 +145,7 @@ Get a list of Facebook pages that the user can manage.
 Get all Facebook pages stored in the database for an admin.
 
 **Query Parameters:**
+
 - `admin_email` - Admin email address
 - `secret_key` - Admin secret key
 - `list_page` - If true, return only filtered fields
@@ -178,6 +182,7 @@ Subscribe the app to Messenger events for a Facebook Page.
 ```
 
 **Query Parameters:**
+
 - `secret_key` - Admin secret key
 
 **Response:**
@@ -194,6 +199,7 @@ Subscribe the app to Messenger events for a Facebook Page.
 Unsubscribe the app from Messenger events for a Facebook Page.
 
 **Query Parameters:**
+
 - `page_id` - Facebook page ID
 - `secret_key` - Admin secret key
 
@@ -210,6 +216,7 @@ Unsubscribe the app from Messenger events for a Facebook Page.
 Toggle AI usage for a Facebook page.
 
 **Query Parameters:**
+
 - `page_id` - Facebook page ID
 - `using_ai` - Boolean to enable/disable AI
 - `secret_key` - Admin secret key
@@ -230,6 +237,7 @@ Toggle AI usage for a Facebook page.
 Facebook webhook verification endpoint.
 
 **Query Parameters:**
+
 - `hub.mode` - Verification mode (subscribe)
 - `hub.verify_token` - Verification token
 - `hub.challenge` - Challenge string
@@ -249,12 +257,14 @@ Handles incoming webhook events from Facebook Messenger.
 **Response:** `{"status": "ok"}`
 
 **Supported Events:**
+
 - Text messages
 - Postback events
 - Message deliveries
 - Message reads
 
 **Features:**
+
 - **Message Deduplication:** Prevents processing duplicate messages using unique keys
 - **Message Debouncing:** Batches rapid messages from the same user (4-second window)
 - **Page Validation:** Checks if page exists and is connected before processing
@@ -285,6 +295,7 @@ Send a message to a Facebook user.
 ```
 
 **Processing:**
+
 1. Sends message to Facebook user via Graph API
 2. Adds message to session for tracking
 3. Forwards message to configured webhook URL
@@ -343,6 +354,7 @@ Add webhook URL to an existing Facebook page.
 Get webhook URL for a specific page.
 
 **Query Parameters:**
+
 - `page_id` - Facebook page ID
 - `secret_key` - Admin secret key
 
@@ -360,6 +372,7 @@ Get webhook URL for a specific page.
 Remove webhook URL from a page.
 
 **Query Parameters:**
+
 - `page_id` - Facebook page ID
 - `secret_key` - Admin secret key
 
@@ -392,6 +405,7 @@ Receives Pub/Sub push deliveries from the agent processing system.
 **Response:** No content (HTTP 204)
 
 **Processing Logic:**
+
 1. Decodes base64 message data
 2. Validates platform is "facebook"
 3. Extracts user_id, message text, and page_id
@@ -400,6 +414,7 @@ Receives Pub/Sub push deliveries from the agent processing system.
 6. Forwards message to webhook URL
 
 **Status Codes:**
+
 - `204 No Content`: Successfully processed (always returns 204 to avoid Pub/Sub retries)
 
 ## Message Processing Flow
@@ -453,6 +468,7 @@ Agent Processing → Pub/Sub Subscription → Service → Facebook API → User
 Admin interface for managing conversations.
 
 **Query Parameters:**
+
 - `secret_key` - Admin secret key
 
 **Response:**
@@ -467,6 +483,7 @@ Admin interface for managing conversations.
 Get managed Facebook page information for an admin.
 
 **Query Parameters:**
+
 - `email` - Admin email address
 
 **Response:**
@@ -585,31 +602,37 @@ Error responses include a `detail` field with the error message:
 ## Message Features
 
 ### Debouncing
+
 - Messages from the same user are queued for 4 seconds
 - Rapid messages are combined into a single request
 - Prevents spam and improves processing efficiency
 
 ### Deduplication
+
 - Uses unique message keys to prevent duplicate processing
 - Maintains a cache of processed messages (max 10,000 entries)
 - Automatically clears cache when full
 
 ### Session Management
+
 - Unique session IDs for each Facebook user
 - Tracks visit counts and message timestamps
 - Maintains conversation context and preferences
 
 ### AI Toggle
+
 - Per-page control over AI processing
 - Messages from pages with AI disabled are stored but not processed
 - Admin can toggle AI on/off via API
 
 ### Webhook Forwarding
+
 - Forwards all messages to configured webhook URLs
 - Includes message metadata and timestamps
 - Supports custom headers and authentication
 
 ### Markdown Processing
+
 - Removes markdown formatting from agent responses
 - Converts to plain text for Facebook compatibility
 - Handles code blocks, links, and formatting
@@ -650,7 +673,7 @@ The service runs on the configured port (default: 8080) and requires:
 4. Pub/Sub topic and subscription setup
 5. Proper environment variable configuration
 
-## Example Usage
+<!-- ## Example Usage
 
 ### Complete Setup Flow
 
@@ -690,7 +713,7 @@ curl -X POST "https://your-domain.com/api/facebook/send_message" \
 6. **Toggle AI for Page**:
 ```bash
 curl -X PUT "https://your-domain.com/api/facebook/pages/toggle_ai?page_id=page_id&using_ai=false&secret_key=admin123"
-```
+``` -->
 
 ## Integration with Main Agent Service
 
