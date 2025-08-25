@@ -676,7 +676,7 @@ The service runs on the configured port (default: 8080) and requires:
 To run the deployment:
 
 1. Load the .env in `spa_customer_service/agents/customer-support` with command in terminal
-<pre> ```export $(grep -v '^#' .env | xargs) ``` </pre>
+```export $(grep -v '^#' .env | xargs) ```
 2. Prepare the env.yaml in `spa_customer_service/agents/customer-support/deployment_facebook`
 3. Run deploy script ```bash deploy.sh``` in terminal
 
